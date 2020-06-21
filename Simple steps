@@ -1,39 +1,40 @@
 
-Create a new environment in anaconda navigator ex:-pyspark or bigdata
+1->Create a new environment in anaconda navigator ex:-pyspark or bigdata
 
-Download latest version of java from the following link :- https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html 
+2->Download latest version of java from the following link :- https://www.oracle.com/in/java/technologies/javase/javase-jdk8-downloads.html 
                                  and install it
 
-Download latest version of apache spark from the following link:-https://spark.apache.org/downloads.html.
+3->Download latest version of apache spark from the following link:-https://spark.apache.org/downloads.html.
   Note:-The downloaded file in the zip format do not unzip it
 
-Create a new folder in C:/ lets say SPARK and and paste the zip file of apache spark in that folder and after that unzip it
+4->Create a new folder in C:/ lets say SPARK and and paste the zip file of apache spark in that folder and after that unzip it
 
-Open jupyter notebook in new environment 
+5->Open jupyter notebook in new environment 
 
-run following codes in jupyter notebook (one time)
+6->run following codes in jupyter notebook (one time)
 
-!pip install pyspark
-!pip install findspark
-!pip install Jpype1
+     !pip install pyspark
+     !pip install findspark
+     !pip install Jpype1
 
-# the codes need to run every time when you use jupyter notebook
-import findspark
-import os
+7->After running above codes in jupyter notebook run the below codes
+    # the codes need to run every time when you use jupyter notebook
+    import findspark
+    import os
 
-#this is the path of java file installed 
-#note that version may change in future
-os.environ["JAVA_HOME"] = "C:/Program Files/Java/jdk1.8.0_251" 
+    #this is the path of java file installed 
+    #note that version may change in future
+    os.environ["JAVA_HOME"] = "C:/Program Files/Java/jdk1.8.0_251" 
 
-#this is the path for hadoop file 
-#note that the "SPARK"  folder is created 
-os.environ["SPARK_HOME"] = "C:/SPARK/spark-3.0.0-bin-hadoop3.2/spark-3.0.0-bin-hadoop3.2" 
+    #this is the path for hadoop file 
+    #note that the "SPARK"  folder is created 
+    os.environ["SPARK_HOME"] = "C:/SPARK/spark-3.0.0-bin-hadoop3.2/spark-3.0.0-bin-hadoop3.2" 
 
-# Now you can use pyspark in jupyter notebook
+8-># Now you can use pyspark in jupyter notebook
 
-#test code
-from pyspark.sql import SparkSession
-spark = SparkSession.builder.master("local[*]").getOrCreate()
-rdd=spark.read.text("Hobbit.txt")
-rdd.take(5)
+    #test code
+    from pyspark.sql import SparkSession
+    spark = SparkSession.builder.master("local[*]").getOrCreate()
+    rdd=spark.read.text("Hobbit.txt")
+    rdd.take(5)
 
