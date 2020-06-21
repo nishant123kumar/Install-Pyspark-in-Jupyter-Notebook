@@ -11,5 +11,29 @@ Create a new folder in C:/ lets say SPARK and and paste the zip file of apache s
 
 Open jupyter notebook in new environment 
 
+run following codes in jupyter notebook (one time)
 
+!pip install pyspark
+!pip install findspark
+!pip install Jpype1
+
+# the codes need to run every time when you use jupyter notebook
+import findspark
+import os
+
+#this is the path of java file installed 
+#note that version may change in future
+os.environ["JAVA_HOME"] = "C:/Program Files/Java/jdk1.8.0_251" 
+
+#this is the path for hadoop file 
+#note that the "SPARK"  folder is created 
+os.environ["SPARK_HOME"] = "C:/SPARK/spark-3.0.0-bin-hadoop3.2/spark-3.0.0-bin-hadoop3.2" 
+
+# Now you can use pyspark in jupyter notebook
+
+#test code
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.master("local[*]").getOrCreate()
+rdd=spark.read.text("Hobbit.txt")
+rdd.take(5)
 
